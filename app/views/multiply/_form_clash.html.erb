@@ -1,0 +1,16 @@
+<%= form_tag(:controller => 'multiply', :action => 'clash') do %>
+
+  <%= label(:nafdsdfsdfdfme, "Αρχική τιμή πρώτου") %>
+  <%= text_field_tag('initial_price') %>
+
+  <br>
+  <%= label(:nasdfsdfdfme, "Αύξηση τιμής για κάθε επιπλέον") %>
+  <%= text_field_tag('overhead') %>
+
+  <br>
+  <%= label(:nasdfsdfdfme, "Πλήθος για αγορά") %>
+  <%= text_field_tag('nos_to_buy') %>
+
+  <%= submit_tag("Display total price") %>
+
+  <% end %>

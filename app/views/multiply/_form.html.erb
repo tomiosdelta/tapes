@@ -1,0 +1,9 @@
+<%= form_tag(:controller => 'multiply', :action => 'show') do %>
+
+  <%= text_field_tag('multiply[num_until]') %>
+  <%= text_field_tag('multiply[num_times]') %><br>
+
+
+
+  <%= submit_tag("Display tables") %>
+<% end %>

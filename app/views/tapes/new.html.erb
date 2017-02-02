@@ -1,0 +1,13 @@
+<h1>Tapes#new</h1>
+<p>Find me in app/views/tapes/new.html.erb</p>
+
+<p><%= link_to('Back to Tapes list', {:controller => 'tapes', :action => 'index'})%>
+
+<%= form_for(:tape, :url => {:action => 'create'}) do |k| %>
+
+    <%= render(:partial => "form", :locals => {:t => k}) %>
+
+<% end %>
+
+<hr />
+<%= params.inspect %>

@@ -1,0 +1,29 @@
+
+<table>
+
+  <tr>
+    <th><%= s.label(:tape_id, "Tape Name") %></th>
+    <td><%= s.select(:tape_id, @tapes.map {|t| [t.name, t.id]}) %></td>
+  </tr>
+  <tr>
+    <th><%= s.label(:title) %></th>
+    <td><%= s.text_field(:title) %></td>
+  </tr>
+  <tr>
+    <th><%= s.label(:artist, 'Artist') %></th>
+    <td><%= s.text_field(:artist) %></td>
+  </tr>
+  <tr>
+    <th><%= s.label(:duration, 'Duration in mins') %></th>
+    <td><%= s.text_field(:duration) %></td>
+  </tr>
+  <tr>
+    <th><%= s.label(:album) %></th>
+    <td><%= s.text_field(:album) %></td>
+  </tr>
+  <tr>
+    <th><%= s.label(:year) %></th>
+    <td><%= s.text_field(:year) %></td>
+  </tr>
+
+</table>

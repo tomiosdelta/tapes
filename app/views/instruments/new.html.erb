@@ -1,0 +1,25 @@
+<h1>Instruments#new</h1>
+<p>Find me in app/views/instruments/new.html.erb</p>
+
+<%= link_to('Back to Tapes list', {:controller => 'tapes', :action => 'index'}) %><br><br>
+<%= link_to('Back to songs list', {:controller => 'songs', :action => 'index', :tape_id => @song[:tape_id]}) %><br><br>
+
+<%= form_for(:instrument, :url => {:controller => 'instruments', :action => 'create', :song_id => @song.id}) do |i| %>
+
+  <%= render(:partial => 'instrument_form', :locals => {:i => i}) %>
+
+  <%= submit_tag('Add instrument') %>
+
+<% end %>
+<hr/>
+
+
+<hr/>
+<%= 'params.inspect = ' %><br>
+<%= params.inspect %>
+<hr/>
+<%= '@instruments.inspect = ' %><br>
+<%= @instruments.inspect %>
+<hr/>
+<%= '@song.inspect = ' %><br>
+<%= @song.inspect %>

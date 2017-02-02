@@ -1,0 +1,44 @@
+<h1>Tapes#show</h1>
+<p>Find me in app/views/tapes/show.html.erb</p>
+
+<p><%= link_to('Back to Tapes list', {:controller => 'tapes', :action => 'index'})%>
+
+<div>
+  <h2>Show Tape</h2>
+
+  <table>
+    <tr>
+      <th>Name</th>
+      <td><%= @tape.name %></td>
+    </tr>
+    <tr>
+      <th>Duration</th>
+      <td><%= @tape.duration %></td>
+    </tr>
+    <tr>
+      <th>Make</th>
+      <td><%= @tape.make %></td>
+    </tr>
+    <tr>
+    <tr>
+      <th>Material</th>
+      <td><%= @tape.material %></td>
+    </tr>
+    <tr>
+      <th>Created</th>
+      <td><%= @tape.created_at %></td>
+    </tr>
+    <tr>
+      <th>Updated</th>
+      <td><%= @tape.updated_at %></td>
+    </tr>
+  </table>
+
+</div>
+<hr />
+<hr />
+Params.inspect = </br>
+<%= params.inspect %>
+<hr />
+@tape.inspect = </br>
+<%= @tape.inspect%>

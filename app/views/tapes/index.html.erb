@@ -1,0 +1,38 @@
+<h1>Tapes#index</h1>
+<p>Find me in app/views/tapes/index.html.erb</p>
+<hr />
+<%= link_to('Create New Tape Item', {:controller => 'tapes', :action => 'new'}) %>
+<hr />
+<%= "Average duration = #{Tape.average(:duration)}" %>
+<hr />
+
+<table>
+  <tr>
+    <th>-ID-</th>
+    <th>Name of Tape</th>
+    <th>Duration</th>
+    <th>Number of songs</th>
+    <th>Manufacturer</th>
+    <th>Material</th>
+  </tr>
+  <% @tapes.each do |tape| %>
+  <tr>
+    <td><%= tape.id %></td> 
+    <td><%= tape.name %></td>
+    <td><%= tape.duration %></td>
+    <td><%= tape.songs.size %></td>
+    <td><%= tape.make %></td>
+    <td><%= tape.material %></td>
+    <td><%= link_to('Show', {:controller => 'tapes', :action => 'show', :id => tape.id})%></td>
+    <td><%= link_to('Edit', {:controller => 'tapes', :action => 'edit', :id => tape.id})%></td>
+    <td><%= "#{tape.duration - Tape.average(:duration)}"%></td>
+    <td><%= diff_from_average(tape.duration) %></td>
+    <td><%= link_to('Songs list', {:controller => 'songs', :action => 'index', :tape_id => tape.id})%></td>
+  </tr>
+  <% end %>
+
+</table>
+
+<hr />
+<hr />
+<%= @tapes.inspect %>

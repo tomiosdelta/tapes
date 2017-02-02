@@ -1,0 +1,55 @@
+<h1>Songs#index</h1>
+<p>Find me in app/views/songs/index.html.erb</p>
+
+<p><%= link_to('Back to Tapes list', {:controller => 'tapes', :action => 'index'})%>
+<br>
+<%= link_to('Add new song to the tape', {:controller => 'songs', :action => 'new', :tape_id => @tape.id}) %>
+
+<table>
+  <tr>
+    <th>Tape ID</th>
+    <th>Song ID</th>   
+    <th>Title of Song</th>
+    <th>Artist</th>
+    <th>Duration</th>
+    <th>Album</th>
+    <th>Year</th>
+    <th>Number of instruments</th>
+  </tr>
+  <% @songs.each do |song| %>
+  <tr>
+    <td><%= @tape.id %></td>
+    <td><%= song.id %></td> 
+    <td><%= song.title %></td>
+    <td><%= song.artist %></td>
+    <td><%= song.duration %></td>
+    <td><%= song.album %></td>
+    <td><%= song.year %></td>
+    <td><%= song.instruments.size %></td>
+    <td><%= link_to('Show', {:controller => 'songs', :action => 'show', :id => song.id})%></td>
+    <td><%= link_to('Edit', {:controller => 'songs', :action => 'edit', :id => song.id})%></td>
+    <td><%= "#{song.duration - Song.average(:duration)}"%></td>
+    <td><%= diff_from_average(song.duration) %></td>
+<!--     <td><%# link_to('Songs list', {:controller => 'songs', :action => 'index', :tape_id => tape.id})%></td> -->
+    <td><%= link_to('Instruments list', {:controller => 'instruments', :action => 'index', :song_id => song.id}) %></td>
+  </tr>
+  <% end %>
+
+</table>
+
+<hr />
+Params.inspect = </br>
+<%= params.inspect %>
+<hr />
+@tape.inspect = </br>
+<%= @tape.inspect%>
+<hr />
+@tapes.inspect = </br>
+<%= @tapes.inspect%>
+<hr />
+@song.inspect = </br>
+<%= @song.inspect%>
+<hr />
+@songs.inspect = </br>
+<%= @songs.inspect%>
+

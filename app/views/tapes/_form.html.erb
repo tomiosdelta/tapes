@@ -1,0 +1,28 @@
+<table>
+  <tr>
+    <th><%= t.label(:name) %></th>
+    <td><%= t.text_field(:name) %></td>
+  </tr>
+  <tr>
+    <th><%= t.label(:duration) %></th>
+    <td><%= t.select(:duration, [45, 60, 90, 120]) %></td>
+  </tr>
+   <tr>
+    <th><%= t.label(:make) %></th>
+    <td><%= t.text_field(:make) %></td>
+  </tr>
+  <tr>
+<!--<tr>
+      <th><%= label(:tape, :make) %></th>
+      <th><%= text_field_tag('tape[make]') %></th>
+      <td><%= text_field(:tape, :make) %></td>
+    </tr> -->
+  <tr>
+    <th><%= t.label(:material) %></th>
+    <td><%= t.text_field(:material) %></td>
+  </tr>
+  <tr>
+    <th></th>
+  <td><%= submit_tag(@button_label) %></td>
+  </tr>
+  </table>

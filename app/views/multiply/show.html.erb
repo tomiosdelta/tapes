@@ -1,0 +1,21 @@
+<title><%= "Πολλαπλασιασμός #{@num_until} X #{@num_times}" %></title>
+<h1>Multiply#show</h1>
+<p>Find me in app/views/multiply/show.html.erb</p>
+<%= link_to "Home", root_path %>
+
+<%= params[:multiply][:num_until] %>
+<%= params[:multiply][:num_times] %>
+
+<%= @num_until %>
+<%= :num_times %>
+
+<hr />
+
+<%= @tabl %>
+
+<hr />
+
+<%= @tabl[@num_until][@num_times] %>
+
+<hr />
+<%= params.inspect %>

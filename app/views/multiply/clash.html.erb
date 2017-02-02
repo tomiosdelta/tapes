@@ -1,0 +1,17 @@
+<time><%= "Υπολογιστής Clash Royale" %></time>
+
+<h1>Multiply#clash</h1>
+<p>Find me in app/views/multiply/clash.html.erb</p>
+<%= link_to "Home", root_path %>
+
+<hr />
+
+<%= "Το συνολικό κόστος αγοράς #{@nos_to_buy} καρτών με αρχική τιμή #{@initial_price} και βήμα αύξησης τιμής #{@overhead} είναι: #{@price} coins" %>
+<br>
+
+<br>
+
+
+<br>
+
+<%= link_to("Νέος υπολογισμός", {:controller => 'multiply', :action => 'index'}) %>

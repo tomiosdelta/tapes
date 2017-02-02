@@ -1,0 +1,42 @@
+<h1>Instruments#index</h1>
+<p>Find me in app/views/instruments/index.html.erb</p>
+<hr/>
+<%= "Instruments playing in song #{@song.title} which is inside tape #{Tape.find(@song.tape_id).name} " %>
+<hr/>
+
+<%= link_to('Back to Tapes list', {:controller => 'tapes', :action => 'index'}) %><br><br>
+<%= link_to('Back to songs list', {:controller => 'songs', :action => 'index', :tape_id => @song[:tape_id]}) %><br><br>
+<%= link_to('Add new instrument to this song', {:controller => 'instruments', :action => 'new', :song_id => @song.id}) %><br><br>
+
+<table>
+   <tr>
+    <th>Instrument ID</th>
+    <th>Instrument name</th>
+    <th>Manufacturer</th>
+    <th>Material</th>
+    <th>Country of Origin</th>
+    <th>Quality grade</th>
+    <th>ACTIONS</th>
+  </tr>
+   <% @instruments.each do |instrument| %>
+  <td><%= instrument.id %></td>
+  <td><%= instrument.name %></td>
+  <td><%= instrument.manufacturer %></td>
+  <td><%= instrument.material %></td>
+  <td><%= instrument.origin_country %></td>
+  <td><%= instrument.quality %></td>
+  <% end %>
+</table>
+
+<hr/>
+<%= 'params.inspect = ' %><br>
+<%= params.inspect %>
+<hr/>
+<%= '@instruments.inspect = ' %><br>
+<%= @instruments.inspect %>
+<hr/>
+<%= '@song.inspect = ' %><br>
+<%= @song.inspect %>
+<br/>
+<%= @song.id%>
+

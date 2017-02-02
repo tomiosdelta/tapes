@@ -1,0 +1,28 @@
+<table>
+
+  <tr>
+    <th><%= i.label(:song_id, "Song Title") %></th>
+    <td><%= i.select(:song_id, Tape.find(@song.tape_id).songs.map {|s| [s.title, s.id]}) %></td>
+  </tr>
+  <tr>
+    <th><%= i.label(:name) %></th>
+    <td><%= i.text_field(:name) %></td>
+  </tr>
+  <tr>
+    <th><%= i.label(:manufacturer, 'Manufacturer of instrument') %></th>
+    <td><%= i.text_field(:manufacturer) %></td>
+  </tr>
+  <tr>
+    <th><%= i.label(:material, 'maTeRial') %></th>
+    <td><%= i.text_field(:material) %></td>
+  </tr>
+  <tr>
+    <th><%= i.label(:origin_country, 'Country that came from') %></th>
+    <td><%= i.text_field(:origin_country) %></td>
+  </tr>
+  <tr>
+    <th><%= i.label(:quality) %></th>
+    <td><%= i.text_field(:quality) %></td>
+  </tr>
+
+</table>

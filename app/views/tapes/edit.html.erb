@@ -1,0 +1,18 @@
+<h1>Tapes#edit</h1>
+<p>Find me in app/views/tapes/edit.html.erb</p>
+
+<p><%= link_to('Back to Tapes list', {:controller => 'tapes', :action => 'index'})%>
+
+<%= form_for(:tape, :url => {:action => 'update', :id => @tape.id}) do |k| %>
+
+    <%= render(:partial => "form", :locals => {:t => k}) %>
+
+<% end %>
+
+<hr />
+<hr />
+Params.inspect = </br>
+<%= params.inspect %>
+<hr />
+@tape.inspect = </br>
+<%= @tape.inspect%>
