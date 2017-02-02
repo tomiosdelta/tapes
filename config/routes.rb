@@ -1,13 +1,13 @@
 Rails.application.routes.draw do
-  get 'instruments/index'
+  # get 'instruments/index'
 
-  get 'instruments/show'
+  # get 'instruments/show'
 
-  get 'instruments/edit'
+  # get 'instruments/edit'
 
-  get 'instruments/new'
+  # get 'instruments/new'
 
-  get 'instruments/delete'
+  # get 'instruments/delete'
 
   # get 'songs/index'
 

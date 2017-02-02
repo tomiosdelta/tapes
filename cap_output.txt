@@ -1,0 +1,100 @@
+tomios@smallpc ~/Dropbox/Ruby/Tommy/Play/ror/tapes $ cap production deploy
+deploy@88.99.123.97's password:
+deploy@88.99.123.97's password:
+rvm 1.28.0 (latest) by Wayne E. Seguin <wayneeseguin@gmail.com>, Michal Papis <mpapis@gmail.com> [https://rvm.io/]
+ruby-2.3.0
+ruby 2.3.0p0 (2015-12-25 revision 53290) [x86_64-linux]
+00:00 git:wrapper
+      01 mkdir -p /tmp
+    ✔ 01 deploy@88.99.123.97 0.132s
+      Uploading /tmp/git-ssh-tapes-production-tomios.sh 100.0%
+      02 chmod 700 /tmp/git-ssh-tapes-production-tomios.sh
+    ✔ 02 deploy@88.99.123.97 0.133s
+00:00 git:check
+      01 git ls-remote https://github.com/tomiosdelta/tapes.git HEAD
+      01 47c46ae07cc65d51b3e0843ad38082040ca82e04 HEAD
+    ✔ 01 deploy@88.99.123.97 0.776s
+00:01 deploy:check:directories
+      01 mkdir -p /home/deploy/tapes/shared /home/deploy/tapes/releases
+    ✔ 01 deploy@88.99.123.97 0.133s
+00:01 deploy:check:linked_dirs
+      01 mkdir -p /home/deploy/tapes/shared/log /home/deploy/tapes/shared/tmp/pids /home/deploy/tapes/shared/tmp/cache /home/deploy/tapes/shared/tmp/sockets /home/deploy/tapes/shared/vendor/bundle /home/deploy/tapes/shared/public/system …
+    ✔ 01 deploy@88.99.123.97 0.136s
+00:01 deploy:check:make_linked_dirs
+      01 mkdir -p /home/deploy/tapes/shared/config
+    ✔ 01 deploy@88.99.123.97 0.133s
+00:02 git:clone
+      The repository mirror is at /home/deploy/tapes/repo
+00:02 git:update
+      01 git remote set-url origin https://github.com/tomiosdelta/tapes.git
+    ✔ 01 deploy@88.99.123.97 0.137s
+      02 git remote update --prune
+      02 Fetching origin
+    ✔ 02 deploy@88.99.123.97 0.768s
+00:03 git:create_release
+      01 mkdir -p /home/deploy/tapes/releases/20170202211929
+    ✔ 01 deploy@88.99.123.97 0.135s
+      02 git archive master | /usr/bin/env tar -x -f - -C /home/deploy/tapes/releases/20170202211929
+    ✔ 02 deploy@88.99.123.97 0.146s
+00:04 deploy:set_current_revision
+      01 echo "47c46ae07cc65d51b3e0843ad38082040ca82e04" >> REVISION
+    ✔ 01 deploy@88.99.123.97 0.134s
+00:04 deploy:symlink:linked_files
+      01 mkdir -p /home/deploy/tapes/releases/20170202211929/config
+    ✔ 01 deploy@88.99.123.97 0.132s
+      02 ln -s /home/deploy/tapes/shared/config/database.yml /home/deploy/tapes/releases/20170202211929/config/database.yml
+    ✔ 02 deploy@88.99.123.97 0.134s
+      03 ln -s /home/deploy/tapes/shared/config/secrets.yml /home/deploy/tapes/releases/20170202211929/config/secrets.yml
+    ✔ 03 deploy@88.99.123.97 0.133s
+00:05 deploy:symlink:linked_dirs
+      01 mkdir -p /home/deploy/tapes/releases/20170202211929 /home/deploy/tapes/releases/20170202211929/tmp /home/deploy/tapes/releases/20170202211929/vendor /home/deploy/tapes/releases/20170202211929/public
+    ✔ 01 deploy@88.99.123.97 0.134s
+      02 rm -rf /home/deploy/tapes/releases/20170202211929/log
+    ✔ 02 deploy@88.99.123.97 0.134s
+      03 ln -s /home/deploy/tapes/shared/log /home/deploy/tapes/releases/20170202211929/log
+    ✔ 03 deploy@88.99.123.97 0.132s
+      04 ln -s /home/deploy/tapes/shared/tmp/pids /home/deploy/tapes/releases/20170202211929/tmp/pids
+    ✔ 04 deploy@88.99.123.97 0.134s
+      05 ln -s /home/deploy/tapes/shared/tmp/cache /home/deploy/tapes/releases/20170202211929/tmp/cache
+    ✔ 05 deploy@88.99.123.97 0.134s
+      06 ln -s /home/deploy/tapes/shared/tmp/sockets /home/deploy/tapes/releases/20170202211929/tmp/sockets
+    ✔ 06 deploy@88.99.123.97 0.135s
+      07 ln -s /home/deploy/tapes/shared/vendor/bundle /home/deploy/tapes/releases/20170202211929/vendor/bundle
+    ✔ 07 deploy@88.99.123.97 0.137s
+      08 ln -s /home/deploy/tapes/shared/public/system /home/deploy/tapes/releases/20170202211929/public/system
+    ✔ 08 deploy@88.99.123.97 0.133s
+      09 ln -s /home/deploy/tapes/shared/public/uploads /home/deploy/tapes/releases/20170202211929/public/uploads
+    ✔ 09 deploy@88.99.123.97 0.135s
+      10 ln -s /home/deploy/tapes/shared/public/assets /home/deploy/tapes/releases/20170202211929/public/assets
+    ✔ 10 deploy@88.99.123.97 0.133s
+00:09 bundler:install
+      01 ~/.rvm/bin/rvm default do bundle install --path /home/deploy/tapes/shared/bundle --without development test --deployment --quiet
+    ✔ 01 deploy@88.99.123.97 7.676s
+00:17 deploy:assets:precompile
+      01 ~/.rvm/bin/rvm default do bundle exec rake assets:precompile
+    ✔ 01 deploy@88.99.123.97 2.527s
+00:20 deploy:assets:backup_manifest
+      01 mkdir -p /home/deploy/tapes/releases/20170202211929/assets_manifest_backup
+    ✔ 01 deploy@88.99.123.97 0.136s
+      02 cp /home/deploy/tapes/releases/20170202211929/public/assets/.sprockets-manifest-6b3025579eebb03c3aff5616aae711a1.json /home/deploy/tapes/releases/20170202211929/assets_manifest_backup
+    ✔ 02 deploy@88.99.123.97 0.137s
+00:20 deploy:migrate
+      [deploy:migrate] Run `rake db:migrate`
+00:21 deploy:migrating
+      01 ~/.rvm/bin/rvm default do bundle exec rake db:migrate
+    ✔ 01 deploy@88.99.123.97 2.495s
+00:23 deploy:symlink:release
+      01 ln -s /home/deploy/tapes/releases/20170202211929 /home/deploy/tapes/releases/current
+    ✔ 01 deploy@88.99.123.97 0.134s
+      02 mv /home/deploy/tapes/releases/current /home/deploy/tapes
+    ✔ 02 deploy@88.99.123.97 0.133s
+00:24 passenger:restart
+      01 passenger-config restart-app /home/deploy/tapes --ignore-app-not-running
+      01 Restarting /home/deploy/tapes/current/public (production)
+    ✔ 01 deploy@88.99.123.97 0.332s
+00:24 deploy:cleanup
+      Keeping 5 of 5 deployed releases on 88.99.123.97
+      No old releases (keeping newest 5) on 88.99.123.97
+00:24 deploy:log_revision
+      01 echo "Branch master (at 47c46ae07cc65d51b3e0843ad38082040ca82e04) deployed as release 20170202211929 by tomios" >> /home/deploy/tapes/revisions.log
+    ✔ 01 deploy@88.99.123.97 0.135s
