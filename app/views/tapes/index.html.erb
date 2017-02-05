@@ -1,6 +1,8 @@
 <h1>Tapesss#index</h1>
 <p>Find me in app/views/tapes/index.html.erb</p>
 <hr />
+<%= link_to('Root', root_path) %>
+<hr />
 <%= link_to('Create New Tape Item', {:controller => 'tapes', :action => 'new'}) %>
 <hr />
 <%= "Average duration = #{Tape.average(:duration)}" %>
